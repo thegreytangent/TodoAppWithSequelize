@@ -1,0 +1,26 @@
+const Todo = require('../models').Todo;
+
+module.exports = {
+   
+    create(req, res) {
+      return Todo
+        .create({
+          title: req.body.title,
+        })
+        .then(todo => res.status(201).send(todo))
+        .catch(error => res.status(400).send(error));
+    },
+
+    list(req, res) {
+      return Todo
+      .findAll()
+      .then(r => {
+        console.log("findall", r);
+        return r.res.status(200).send({
+          test: 4
+        })
+      })
+      .catch(err => res.status(400).send(err))
+    }
+  };
+  
