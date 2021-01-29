@@ -11,6 +11,10 @@ module.exports = {
       content: {
         type: Sequelize.STRING
       },
+      todoId: {
+        type: Sequelize.INTEGER,
+        references: {model: 'Todos', key: 'id'}
+      },
       complete: {
         type: Sequelize.BOOLEAN
       },

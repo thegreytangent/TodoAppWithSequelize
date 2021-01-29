@@ -14,13 +14,8 @@ module.exports = {
     list(req, res) {
       return Todo
       .findAll()
-      .then(r => {
-        console.log("findall", r);
-        return r.res.status(200).send({
-          test: 4
-        })
-      })
-      .catch(err => res.status(400).send(err))
+      .then(todos => res.status(200).json(todos))
+      .catch(error => res.status(400).send(error));
     }
   };
   
